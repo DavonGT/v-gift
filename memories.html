@@ -38,7 +38,7 @@
         .memories img {
             border: 2px solid #ff69b4;
             border-radius: 10px;
-            margin: 10px;
+            margin: 10px; /* Adjust margin to your preference */
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             flex-shrink: 0;
             max-width: 100%;
@@ -106,13 +106,15 @@
         let currentIndex = 0;
 
         function resizeContainer() {
-            container.style.width = `${images[currentIndex].clientWidth + 24}px`; // Adjust container width to image width + margins
+            const imageMargin = parseInt(window.getComputedStyle(images[currentIndex]).marginLeft) + parseInt(window.getComputedStyle(images[currentIndex]).marginRight);
+            container.style.width = `${images[currentIndex].clientWidth + imageMargin}px`; // Adjust container width to image width + margins
         }
 
         function scrollToNextImage() {
+            const imageMargin = parseInt(window.getComputedStyle(images[currentIndex]).marginLeft) + parseInt(window.getComputedStyle(images[currentIndex]).marginRight);
             currentIndex = (currentIndex + 1) % images.length;
             resizeContainer();
-            memories.style.transform = `translateX(-${currentIndex * images[0].clientWidth}px)`;
+            memories.style.transform = `translateX(-${currentIndex * (images[0].clientWidth + imageMargin)}px)`;
         }
 
         window.onload = resizeContainer;
