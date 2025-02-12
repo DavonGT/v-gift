@@ -22,7 +22,7 @@
         body.fade-out {
             opacity: 0;
         }
-
+        
         /* Floating Hearts Animation */
         @keyframes float {
             0% { transform: translateY(0) scale(1); opacity: 1; }
@@ -46,7 +46,7 @@
         @media (max-width: 600px) {
             .heart-float { font-size: 15px; }
         }
-
+        
         /* Container with fade-in effect */
         .container {
             background: rgba(255, 255, 255, 0.9);
@@ -62,7 +62,7 @@
             from { opacity: 0; }
             to { opacity: 1; }
         }
-
+        
         h1 {
             color: #ff3366;
             text-shadow: 2px 2px 8px rgba(255, 51, 102, 0.5);
@@ -73,16 +73,20 @@
             color: #d1477f;
             margin: 10px;
         }
-
+        
         /* Memories Slider Styles */
         .memories-container {
-            overflow: hidden;
+            /* Set a width (optional) and center the container */
+            width: 90%;
             margin: 20px auto;
             border-radius: 10px;
+            overflow: hidden;
+            /* Use text-align to center inline elements */
+            text-align: center;
         }
         .memories {
-            display: flex;
-            width: max-content;
+            /* Change to inline-flex so it can be centered by the parent */
+            display: inline-flex;
             animation: scroll 15s linear infinite;
         }
         .memories img {
@@ -102,7 +106,7 @@
             from { transform: translateX(0); }
             to { transform: translateX(-50%); }
         }
-
+        
         /* Back Link Style */
         .back-link {
             font-size: 16px;
@@ -137,12 +141,12 @@
         <span class="heart-float" style="left: 75%; animation-duration: 7s;">💖</span>
         <span class="heart-float" style="left: 95%; animation-duration: 6s;">❤️</span>
     </div>
-
+    
     <div class="container">
         <h1>Our Beautiful Moments Together</h1>
         <p>Mga nahalungkat ko sa cellphone mo <strong>(nasa cellphone ko yung iba e :( )</strong>.</p>
         <p>Love you always! 💖</p>
-
+        
         <div class="memories-container">
             <div class="memories">
                 <!-- Original 7 Images -->
@@ -163,10 +167,10 @@
                 <img src="images/image7.jpg" alt="Memory 7">
             </div>
         </div>
-
+        
         <a href="index.html" class="back-link">Back to Love Letter</a>
     </div>
-
+    
     <script>
         // Smooth page transition on all link clicks
         document.querySelectorAll('a').forEach(link => {
@@ -179,7 +183,7 @@
                 }, 500);
             });
         });
-
+        
         // Mobile gesture: Swipe right to return to the love letter page
         let touchstartX = 0;
         let touchendX = 0;
