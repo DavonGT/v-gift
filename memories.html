@@ -8,7 +8,7 @@
             background-color: pink;
             text-align: center;
             font-family: 'Cursive', sans-serif;
-            overflow-x: hidden; /* Prevent horizontal overflow */
+            overflow-x: hidden;
             margin: 0;
             padding: 0;
         }
@@ -29,20 +29,20 @@
             border: 2px solid #ff69b4;
             position: relative;
             max-width: 100%;
-            height: 250px; /* Adjust height based on image size */
+            height: 250px; /* Adjust based on image size */
         }
         .memories {
             display: flex;
             width: max-content; /* Ensures natural flow */
-            animation: scroll 10s linear infinite;
+            animation: scroll 5s linear infinite; /* Faster scrolling */
         }
         .memories img {
             border: 2px solid #ff69b4;
             border-radius: 10px;
-            margin: 0 10px; /* Maintain proper spacing */
+            margin: 0 10px; /* Keeps spacing */
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             flex-shrink: 0;
-            height: 100%; /* Keep images proportional */
+            height: 100%; /* Keeps proportions */
             object-fit: cover;
         }
         .memories img:hover {
@@ -53,7 +53,7 @@
         /* Infinite Scroll Animation */
         @keyframes scroll {
             from { transform: translateX(0); }
-            to { transform: translateX(-50%); } /* Moves half, then repeats */
+            to { transform: translateX(-100%); } /* Now scrolls through all images before looping */
         }
 
         .back-link {
@@ -96,7 +96,7 @@
             <img src="images/image6.jpg" alt="Memory 6">
             <img src="images/image7.jpg" alt="Memory 7">
             
-            <!-- Duplicated for Smooth Loop -->
+            <!-- Duplicated to make loop longer -->
             <img src="images/image1.jpg" alt="Memory 1">
             <img src="images/image2.jpg" alt="Memory 2">
             <img src="images/image3.jpg" alt="Memory 3">
