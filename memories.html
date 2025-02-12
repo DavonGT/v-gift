@@ -24,30 +24,40 @@
         }
         .memories-container {
             display: flex;
-            overflow: hidden; /* Hide horizontal overflow */
+            overflow: hidden;
             margin: 20px auto;
             border: 2px solid #ff69b4;
             position: relative;
-            justify-content: center; /* Center the image */
+            justify-content: center;
             max-width: 100%;
+            height: 250px; /* Adjust height based on image size */
         }
         .memories {
             display: flex;
-            transition: transform 0.5s ease-in-out;
+            width: calc(200%); /* Make space for duplicated images */
+            animation: scroll 10s linear infinite;
         }
         .memories img {
             border: 2px solid #ff69b4;
             border-radius: 10px;
-            margin: 10px; /* Adjust margin to your preference */
+            margin: 10px; 
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             flex-shrink: 0;
             max-width: 100%;
             height: auto;
+            object-fit: cover;
         }
         .memories img:hover {
             transform: scale(1.05);
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
         }
+
+        /* Infinite Scroll Animation */
+        @keyframes scroll {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); } /* Moves half, then repeats */
+        }
+
         .back-link {
             display: inline-block;
             margin: 20px auto;
@@ -64,21 +74,11 @@
 
         /* Responsive Design */
         @media (max-width: 600px) {
-            h1 {
-                font-size: 28px;
-            }
-            p {
-                font-size: 16px;
-            }
-            .back-link {
-                padding: 8px 16px;
-            }
-            .memories-container {
-                border-width: 1px;
-            }
-            .memories img {
-                margin: 5px;
-            }
+            h1 { font-size: 28px; }
+            p { font-size: 16px; }
+            .back-link { padding: 8px 16px; }
+            .memories-container { border-width: 1px; }
+            .memories img { margin: 5px; }
         }
     </style>
 </head>
@@ -86,8 +86,19 @@
     <h1>Our Beautiful Moments Together</h1>
     <p>Mga nahalungkat ko sa cellphone mo <strong>(nasa cellphone ko yung iba e :( )</strong>.</p> 
     <p>Love you always! 💖</p>
-    <div class="memories-container" id="memories-container">
-        <div class="memories" id="memories">
+
+    <div class="memories-container">
+        <div class="memories">
+            <!-- Original 7 Images -->
+            <img src="images/image1.jpg" alt="Memory 1">
+            <img src="images/image2.jpg" alt="Memory 2">
+            <img src="images/image3.jpg" alt="Memory 3">
+            <img src="images/image4.jpg" alt="Memory 4">
+            <img src="images/image5.jpg" alt="Memory 5">
+            <img src="images/image6.jpg" alt="Memory 6">
+            <img src="images/image7.jpg" alt="Memory 7">
+            
+            <!-- Duplicated for Smooth Loop -->
             <img src="images/image1.jpg" alt="Memory 1">
             <img src="images/image2.jpg" alt="Memory 2">
             <img src="images/image3.jpg" alt="Memory 3">
@@ -97,31 +108,9 @@
             <img src="images/image7.jpg" alt="Memory 7">
         </div>
     </div>
+
     <br>
     <a href="index.html" class="back-link">Back to Love Letter</a>
 
-    <script>
-        const container = document.getElementById('memories-container');
-        const memories = document.getElementById('memories');
-        const images = memories.getElementsByTagName('img');
-        let currentIndex = 0;
-
-        function resizeContainer() {
-            const imageMargin = parseInt(window.getComputedStyle(images[currentIndex]).marginLeft) + parseInt(window.getComputedStyle(images[currentIndex]).marginRight);
-            container.style.width = `${images[currentIndex].clientWidth + imageMargin}px`; // Adjust container width to image width + margins
-        }
-
-        function scrollToNextImage() {
-            const imageMargin = parseInt(window.getComputedStyle(images[currentIndex]).marginLeft) + parseInt(window.getComputedStyle(images[currentIndex]).marginRight);
-            currentIndex = (currentIndex + 1) % images.length;
-            resizeContainer();
-            memories.style.transform = `translateX(-${currentIndex * (images[0].clientWidth + imageMargin)}px)`;
-        }
-
-        window.onload = resizeContainer;
-        window.onresize = resizeContainer;
-
-        setInterval(scrollToNextImage, 3000); // Change image every 3 seconds
-    </script>
 </body>
 </html>
