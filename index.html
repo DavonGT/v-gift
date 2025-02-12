@@ -4,7 +4,7 @@
     <title>Happy Valentine's Day ❤️</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-        /* Smooth Romantic Gradient */
+        /* Overall body style with smooth transition */
         body {
             font-family: 'Cursive', sans-serif;
             background: linear-gradient(to bottom, #ffdde1, #faa0a0, #ff758f);
@@ -15,6 +15,13 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+            margin: 0;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+        /* When this class is added, the page fades out */
+        body.fade-out {
+            opacity: 0;
         }
 
         /* Floating Hearts Animation */
@@ -22,7 +29,6 @@
             0% { transform: translateY(0) scale(1); opacity: 1; }
             100% { transform: translateY(-100vh) scale(1.3); opacity: 0; }
         }
-
         .floating-hearts {
             position: fixed;
             bottom: 0;
@@ -32,20 +38,17 @@
             pointer-events: none;
             z-index: -1;
         }
-
         .heart-float {
             position: absolute;
             font-size: 20px;
             color: rgba(255, 0, 102, 0.7);
             animation: float 8s linear infinite;
         }
-
-        /* Adjust heart positions for different screen sizes */
         @media (max-width: 600px) {
-            .heart-float { font-size: 15px; } /* Smaller hearts */
+            .heart-float { font-size: 15px; }
         }
 
-        /* Romantic Message Box */
+        /* Romantic Message Box with fade-in effect */
         .container {
             background: rgba(255, 255, 255, 0.9);
             padding: 20px;
@@ -54,6 +57,11 @@
             max-width: 95%;
             margin: auto;
             position: relative;
+            animation: fadeIn 1s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         h1 {
@@ -61,7 +69,6 @@
             text-shadow: 2px 2px 8px rgba(255, 51, 102, 0.5);
             font-size: 24px;
         }
-
         p {
             font-size: 16px;
             color: #d1477f;
@@ -79,11 +86,9 @@
             display: inline-block;
             margin: 10px auto;
         }
-
         .heart:hover {
             transform: scale(1.2);
         }
-
         @keyframes heartbeat {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.2); }
@@ -103,7 +108,6 @@
             margin-top: 15px;
             display: none;
         }
-
         .romantic-link {
             font-size: 16px;
             color: white;
@@ -115,30 +119,16 @@
             transition: background 0.3s ease-in-out, transform 0.2s ease;
             display: inline-block;
         }
-
         .romantic-link:hover {
             background-color: #ff6699;
             transform: scale(1.05);
         }
-
-        /* Mobile-Friendly */
         @media (max-width: 600px) {
-            .container {
-                padding: 10px;
-            }
-            h1 {
-                font-size: 20px;
-            }
-            .heart {
-                font-size: 40px;
-            }
-            #message {
-                font-size: 16px;
-            }
-            .romantic-link {
-                font-size: 14px;
-                padding: 6px 10px;
-            }
+            .container { padding: 10px; }
+            h1 { font-size: 20px; }
+            .heart { font-size: 40px; }
+            #message { font-size: 16px; }
+            .romantic-link { font-size: 14px; padding: 6px 10px; }
         }
     </style>
 </head>
@@ -163,11 +153,31 @@
         </div>
     </div>
 
+    <!-- Include Canvas Confetti for animated effects -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <script>
+        // Trigger confetti along with the surprise
         function showSurprise() {
             document.getElementById("message").style.display = "block";
             document.getElementById("memoriesLink").style.display = "block";
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 }
+            });
         }
+
+        // Smooth page transitions on all link clicks
+        document.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const destination = this.getAttribute('href');
+                document.body.classList.add('fade-out');
+                setTimeout(() => {
+                    window.location.href = destination;
+                }, 500);
+            });
+        });
     </script>
 </body>
 </html>
