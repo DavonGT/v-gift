@@ -4,7 +4,7 @@
     <title>Happy Valentine's Day ❤️</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Cursive', sans-serif;
             background-color: #ffe6e6;
             text-align: center;
             padding: 50px;
@@ -13,6 +13,7 @@
             font-size: 50px;
             color: red;
             cursor: pointer;
+            animation: heartbeat 1.5s infinite;
         }
         .container {
             background: white;
@@ -33,6 +34,14 @@
         }
         .romantic-link:hover {
             color: red;
+        }
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
         }
     </style>
 </head>
