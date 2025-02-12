@@ -2,29 +2,32 @@
 <html>
 <head>
     <title>Our Memories ❤️</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         body {
             background-color: pink;
             text-align: center;
             font-family: 'Cursive', sans-serif;
-            padding: 20px;
         }
         h1 {
             color: #ff69b4;
-            font-size: 28px;
+            font-size: 36px;
         }
         p {
-            font-size: 18px;
+            font-size: 20px;
             color: #ff1493;
+        }
+        .memories-container {
+            max-height: 80vh; /* Set the maximum height of the container */
+            overflow-y: scroll; /* Enable vertical scrolling */
+            padding: 10px;
+            border: 2px solid #ff69b4;
+            margin: 20px auto;
         }
         .memories img {
             border: 2px solid #ff69b4;
             border-radius: 10px;
             margin: 10px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            width: 80%;
-            max-width: 300px;
         }
         .memories img:hover {
             transform: scale(1.05);
@@ -48,14 +51,16 @@
 <body>
     <h1>Our Beautiful Moments Together</h1>
     <p>Mga nahalungkat ko sa cellphone mo(nasa cellphone ko yung iba e :( ). Love you always! 💖</p>
-    <div class="memories">
-        <img src="images/image1.jpg" width="300px">
-        <img src="images/image2.jpg" width="300px">
-        <img src="images/image3.jpg" width="300px">
-        <img src="images/image4.jpg" width="300px">
-        <img src="images/image5.jpg" width="300px">
-        <img src="images/image6.jpg" width="300px">
-        <img src="images/image7.jpg" width="300px">
+    <div class="memories-container">
+        <div class="memories">
+            <img src="images/image1.jpg" width="300px">
+            <img src="images/image2.jpg" width="300px">
+            <img src="images/image3.jpg" width="300px">
+            <img src="images/image4.jpg" width="300px">
+            <img src="images/image5.jpg" width="300px">
+            <img src="images/image6.jpg" width="300px">
+            <img src="images/image7.jpg" width="300px">
+        </div>
     </div>
     <br>
     <a href="index.html" class="back-link">Back to Love Letter</a>
