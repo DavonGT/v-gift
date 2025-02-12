@@ -4,7 +4,7 @@
     <title>Our Memories ❤️</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        /* Overall Body Style (Matching index.html) */
+        /* Overall body style with smooth transition */
         body {
             font-family: 'Cursive', sans-serif;
             background: linear-gradient(to bottom, #ffdde1, #faa0a0, #ff758f);
@@ -15,14 +15,19 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+            margin: 0;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+        body.fade-out {
+            opacity: 0;
         }
 
-        /* Floating Hearts Animation (Same as index.html) */
+        /* Floating Hearts Animation */
         @keyframes float {
             0% { transform: translateY(0) scale(1); opacity: 1; }
             100% { transform: translateY(-100vh) scale(1.3); opacity: 0; }
         }
-
         .floating-hearts {
             position: fixed;
             bottom: 0;
@@ -32,19 +37,17 @@
             pointer-events: none;
             z-index: -1;
         }
-
         .heart-float {
             position: absolute;
             font-size: 20px;
             color: rgba(255, 0, 102, 0.7);
             animation: float 8s linear infinite;
         }
-
         @media (max-width: 600px) {
             .heart-float { font-size: 15px; }
         }
 
-        /* Container Style (Matching index.html) */
+        /* Container with fade-in effect */
         .container {
             background: rgba(255, 255, 255, 0.9);
             padding: 20px;
@@ -53,6 +56,11 @@
             max-width: 95%;
             margin: auto;
             position: relative;
+            animation: fadeIn 1s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         h1 {
@@ -60,7 +68,6 @@
             text-shadow: 2px 2px 8px rgba(255, 51, 102, 0.5);
             font-size: 24px;
         }
-
         p {
             font-size: 16px;
             color: #d1477f;
@@ -73,13 +80,11 @@
             margin: 20px auto;
             border-radius: 10px;
         }
-
         .memories {
             display: flex;
             width: max-content;
             animation: scroll 15s linear infinite;
         }
-
         .memories img {
             border: 2px solid #ff3366;
             border-radius: 10px;
@@ -89,18 +94,16 @@
             height: 250px;
             object-fit: cover;
         }
-
         .memories img:hover {
             transform: scale(1.05);
             box-shadow: 0 0 15px rgba(255, 51, 102, 0.5);
         }
-
         @keyframes scroll {
             from { transform: translateX(0); }
             to { transform: translateX(-50%); }
         }
 
-        /* Back Link (Styled like the romantic link in index.html) */
+        /* Back Link Style */
         .back-link {
             font-size: 16px;
             color: white;
@@ -113,13 +116,10 @@
             display: inline-block;
             margin-top: 20px;
         }
-
         .back-link:hover {
             background-color: #ff6699;
             transform: scale(1.05);
         }
-
-        /* Responsive Design Adjustments */
         @media (max-width: 600px) {
             h1 { font-size: 20px; }
             p { font-size: 14px; }
@@ -129,7 +129,7 @@
     </style>
 </head>
 <body>
-    <!-- Floating Hearts (Same as index.html) -->
+    <!-- Floating Hearts -->
     <div class="floating-hearts">
         <span class="heart-float" style="left: 5%; animation-duration: 6s;">❤️</span>
         <span class="heart-float" style="left: 25%; animation-duration: 4s;">💖</span>
@@ -153,8 +153,7 @@
                 <img src="images/image5.jpg" alt="Memory 5">
                 <img src="images/image6.jpg" alt="Memory 6">
                 <img src="images/image7.jpg" alt="Memory 7">
-                
-                <!-- Duplicated for a Smooth Loop -->
+                <!-- Duplicated for a smooth loop -->
                 <img src="images/image1.jpg" alt="Memory 1">
                 <img src="images/image2.jpg" alt="Memory 2">
                 <img src="images/image3.jpg" alt="Memory 3">
@@ -167,5 +166,38 @@
 
         <a href="index.html" class="back-link">Back to Love Letter</a>
     </div>
+
+    <script>
+        // Smooth page transition on all link clicks
+        document.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const destination = this.getAttribute('href');
+                document.body.classList.add('fade-out');
+                setTimeout(() => {
+                    window.location.href = destination;
+                }, 500);
+            });
+        });
+
+        // Mobile gesture: Swipe right to return to the love letter page
+        let touchstartX = 0;
+        let touchendX = 0;
+        function handleGesture() {
+            if (touchendX - touchstartX > 100) {  // adjust threshold as needed
+                document.body.classList.add('fade-out');
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 500);
+            }
+        }
+        document.addEventListener('touchstart', e => {
+            touchstartX = e.changedTouches[0].screenX;
+        });
+        document.addEventListener('touchend', e => {
+            touchendX = e.changedTouches[0].screenX;
+            handleGesture();
+        });
+    </script>
 </body>
 </html>
