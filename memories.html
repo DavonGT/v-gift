@@ -105,20 +105,20 @@
       border-radius: 10px;
       overflow: hidden;
       position: relative;
-      display: flex;
-      justify-content: center;
+      /* Center inline children */
+      text-align: center;
     }
     
+    /* The slider wrapper simply holds the slider element */
     .slider-wrapper {
       width: 100%;
       position: relative;
       overflow: hidden;
     }
     
+    /* The sliding photos element is now inline-block so that it centers */
     .memories {
-      display: flex;
-      width: max-content;
-      margin: 0 auto;
+      display: inline-block;
       animation: scroll 15s linear infinite;
     }
     
