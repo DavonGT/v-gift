@@ -2,13 +2,48 @@
 <html>
 <head>
     <title>Our Memories ❤️</title>
+    <style>
+        body {
+            background-color: pink;
+            text-align: center;
+            font-family: 'Cursive', sans-serif;
+        }
+        h1 {
+            color: #ff69b4;
+            font-size: 36px;
+        }
+        p {
+            font-size: 20px;
+            color: #ff1493;
+        }
+        .memories img {
+            border: 2px solid #ff69b4;
+            border-radius: 10px;
+            margin: 10px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #ff69b4;
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            transition: background-color 0.3s ease;
+        }
+        .back-link:hover {
+            background-color: #ff1493;
+        }
+    </style>
 </head>
-<body style="background-color: pink; text-align: center;">
+<body>
     <h1>Our Beautiful Moments Together</h1>
     <p>Swipe through some of our best memories. Love you always! 💖</p>
-    <img src="images/image1.jpg" width="300px">
-    <img src="images/image2.jpg" width="300px">
+    <div class="memories">
+        <img src="images/image1.jpg" width="300px">
+        <img src="images/image2.jpg" width="300px">
+    </div>
     <br>
-    <a href="index.html">Back to Love Letter</a>
+    <a href="index.html" class="back-link">Back to Love Letter</a>
 </body>
 </html>
