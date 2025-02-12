@@ -2,20 +2,25 @@
 <html>
 <head>
     <title>Our Memories ❤️</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
             background-color: pink;
             text-align: center;
             font-family: 'Cursive', sans-serif;
             overflow-x: hidden; /* Prevent horizontal overflow */
+            margin: 0;
+            padding: 0;
         }
         h1 {
             color: #ff69b4;
             font-size: 36px;
+            margin: 20px 0;
         }
         p {
-            font-size: 20px;
+            font-size: 18px;
             color: #ff1493;
+            padding: 0 10px;
         }
         .memories-container {
             display: flex;
@@ -24,6 +29,7 @@
             border: 2px solid #ff69b4;
             position: relative;
             justify-content: center; /* Center the image */
+            max-width: 100%;
         }
         .memories {
             display: flex;
@@ -35,6 +41,8 @@
             margin: 10px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             flex-shrink: 0;
+            max-width: 100%;
+            height: auto;
         }
         .memories img:hover {
             transform: scale(1.05);
@@ -42,7 +50,7 @@
         }
         .back-link {
             display: inline-block;
-            margin-top: 20px;
+            margin: 20px auto;
             padding: 10px 20px;
             background-color: #ff69b4;
             color: white;
@@ -53,6 +61,25 @@
         .back-link:hover {
             background-color: #ff1493;
         }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 28px;
+            }
+            p {
+                font-size: 16px;
+            }
+            .back-link {
+                padding: 8px 16px;
+            }
+            .memories-container {
+                border-width: 1px;
+            }
+            .memories img {
+                margin: 5px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -60,13 +87,13 @@
     <p>Mga nahalungkat ko sa cellphone mo(nasa cellphone ko yung iba e :( ). Love you always! 💖</p>
     <div class="memories-container" id="memories-container">
         <div class="memories" id="memories">
-            <img src="images/image1.jpg" width="300px">
-            <img src="images/image2.jpg" width="300px">
-            <img src="images/image3.jpg" width="300px">
-            <img src="images/image4.jpg" width="300px">
-            <img src="images/image5.jpg" width="300px">
-            <img src="images/image6.jpg" width="300px">
-            <img src="images/image7.jpg" width="300px">
+            <img src="images/image1.jpg" alt="Memory 1">
+            <img src="images/image2.jpg" alt="Memory 2">
+            <img src="images/image3.jpg" alt="Memory 3">
+            <img src="images/image4.jpg" alt="Memory 4">
+            <img src="images/image5.jpg" alt="Memory 5">
+            <img src="images/image6.jpg" alt="Memory 6">
+            <img src="images/image7.jpg" alt="Memory 7">
         </div>
     </div>
     <br>
