@@ -12,6 +12,7 @@
         .heart {
             font-size: 50px;
             color: red;
+            cursor: pointer;
         }
         .container {
             background: white;
@@ -20,6 +21,18 @@
             box-shadow: 0 0 10px rgba(0,0,0,0.2);
             max-width: 500px;
             margin: auto;
+        }
+        .link-container {
+            margin-top: 20px;
+        }
+        .romantic-link {
+            font-size: 20px;
+            color: #ff69b4;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .romantic-link:hover {
+            color: red;
         }
     </style>
 </head>
@@ -30,11 +43,15 @@
         <p>Click the heart below for a surprise!</p>
         <p class="heart" onclick="showSurprise()">❤️</p>
         <p id="message" style="display: none;">I love you forever! 💖</p>
+        <div class="link-container" id="memoriesLink" style="display: none;">
+            <a href="memories.html" class="romantic-link">Relive Our Beautiful Moments Together 🌹</a>
+        </div>
     </div>
 
     <script>
         function showSurprise() {
             document.getElementById("message").style.display = "block";
+            document.getElementById("memoriesLink").style.display = "block";
         }
     </script>
 </body>
