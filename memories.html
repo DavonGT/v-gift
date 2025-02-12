@@ -25,6 +25,7 @@
             padding: 10px;
             border: 2px solid #ff69b4;
             margin: 20px auto;
+            max-width: 90%;
         }
         .memories img {
             border: 2px solid #ff69b4;
@@ -32,6 +33,7 @@
             margin: 10px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: inline-block;
+            flex-shrink: 0;
         }
         .memories img:hover {
             transform: scale(1.05);
@@ -72,28 +74,12 @@
     <script>
         const container = document.getElementById('memories-container');
         const memories = document.getElementById('memories');
-        const images = memories.getElementsByTagName('img');
-        let scrollAmount = 0;
-        let currentIndex = 0;
-
-        function scrollImages() {
-            const imageWidth = images[0].clientWidth + 20; // Image width plus margin
-            scrollAmount += imageWidth;
-            container.scrollTo({
-                left: scrollAmount,
-                behavior: 'smooth'
-            });
-            currentIndex++;
-            if (currentIndex >= images.length) {
-                setTimeout(() => {
-                    container.scrollTo({ left: 0, behavior: 'smooth' });
-                    scrollAmount = 0;
-                    currentIndex = 0;
-                }, 1000); // Delay to show the last image before resetting
+        
+        container.addEventListener('scroll', () => {
+            if (container.scrollLeft + container.clientWidth >= container.scrollWidth) {
+                container.scrollLeft = 0;
             }
-        }
-
-        setInterval(scrollImages, 3000); // Scroll every 3 seconds
+        });
     </script>
 </body>
 </html>
