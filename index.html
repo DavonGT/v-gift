@@ -4,7 +4,6 @@
     <title>Happy Valentine's Day ❤️</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-        /* Overall body style with smooth transition */
         body {
             font-family: 'Cursive', sans-serif;
             background: linear-gradient(to bottom, #ffdde1, #faa0a0, #ff758f);
@@ -19,12 +18,10 @@
             opacity: 1;
             transition: opacity 0.5s ease;
         }
-        /* When this class is added, the page fades out */
         body.fade-out {
             opacity: 0;
         }
 
-        /* Floating Hearts Animation */
         @keyframes float {
             0% { transform: translateY(0) scale(1); opacity: 1; }
             100% { transform: translateY(-100vh) scale(1.3); opacity: 0; }
@@ -48,7 +45,6 @@
             .heart-float { font-size: 15px; }
         }
 
-        /* Romantic Message Box with fade-in effect */
         .container {
             background: rgba(255, 255, 255, 0.9);
             padding: 20px;
@@ -75,7 +71,6 @@
             margin: 10px;
         }
 
-        /* Glowing Heart Animation */
         .heart {
             font-size: 50px;
             color: red;
@@ -94,7 +89,6 @@
             50% { transform: scale(1.2); }
         }
 
-        /* Surprise Message */
         #message {
             font-size: 18px;
             font-weight: bold;
@@ -103,7 +97,6 @@
             text-shadow: 0 0 8px rgba(255, 51, 102, 0.5);
         }
 
-        /* Romantic Link */
         .link-container {
             margin-top: 15px;
             display: none;
@@ -133,7 +126,6 @@
     </style>
 </head>
 <body>
-    <!-- Floating Hearts -->
     <div class="floating-hearts">
         <span class="heart-float" style="left: 5%; animation-duration: 6s;">❤️</span>
         <span class="heart-float" style="left: 25%; animation-duration: 4s;">💖</span>
@@ -154,10 +146,8 @@
         </div>
     </div>
 
-    <!-- Include Canvas Confetti for animated effects -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <script>
-        // Trigger confetti along with the surprise
         function showSurprise() {
             document.getElementById("message").style.display = "block";
             document.getElementById("memoriesLink").style.display = "block";
@@ -168,7 +158,6 @@
             });
         }
 
-        // Smooth page transitions on all link clicks
         document.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();

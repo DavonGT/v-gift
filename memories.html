@@ -4,7 +4,6 @@
   <title>Our Memories ❤️</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    /* Overall body style with smooth transition */
     body {
       font-family: 'Cursive', sans-serif;
       background: linear-gradient(to bottom, #ffdde1, #faa0a0, #ff758f);
@@ -23,7 +22,6 @@
       opacity: 0;
     }
     
-    /* Floating Hearts Animation */
     @keyframes float {
       0% { transform: translateY(0) scale(1); opacity: 1; }
       100% { transform: translateY(-100vh) scale(1.3); opacity: 0; }
@@ -47,7 +45,6 @@
       .heart-float { font-size: 15px; }
     }
     
-    /* Floating Compliments Animation */
     @keyframes complimentFloat {
       0% { transform: translateY(100vh) scale(1); opacity: 0; }
       10% { opacity: 0.8; }
@@ -70,7 +67,6 @@
       animation: complimentFloat 12s linear infinite;
     }
     
-    /* Container with fade-in effect */
     .container {
       background: rgba(255, 255, 255, 0.9);
       padding: 20px;
@@ -98,7 +94,6 @@
       margin: 10px;
     }
     
-    /* Memories Slider Styles */
     .memories-container {
       width: 90%;
       margin: 20px auto;
@@ -142,7 +137,6 @@
       to { transform: translateX(-50%); }
     }
     
-    /* Back Link Style */
     .back-link {
       font-size: 16px;
       color: white;
@@ -169,7 +163,6 @@
   </style>
 </head>
 <body>
-  <!-- Floating Hearts -->
   <div class="floating-hearts">
     <span class="heart-float" style="left: 5%; animation-duration: 6s;">❤️</span>
     <span class="heart-float" style="left: 25%; animation-duration: 4s;">💖</span>
@@ -178,7 +171,6 @@
     <span class="heart-float" style="left: 95%; animation-duration: 6s;">❤️</span>
   </div>
   
-  <!-- Floating Compliments -->
   <div class="flying-compliments">
     <span class="compliment-float" style="left: 10%; animation-duration: 12s;">Your voice is magic</span>
     <span class="compliment-float" style="left: 30%; animation-duration: 10s;">Your songs warm my heart</span>
@@ -195,7 +187,6 @@
     <div class="memories-container">
       <div class="slider-wrapper">
         <div class="memories">
-          <!-- Original 7 Images -->
           <img src="images/image1.jpg" alt="Memory 1">
           <img src="images/image2.jpg" alt="Memory 2">
           <img src="images/image3.jpg" alt="Memory 3">
@@ -203,7 +194,7 @@
           <img src="images/image5.jpg" alt="Memory 5">
           <img src="images/image6.jpg" alt="Memory 6">
           <img src="images/image7.jpg" alt="Memory 7">
-          <!-- Duplicated for a smooth loop -->
+
           <img src="images/image1.jpg" alt="Memory 1">
           <img src="images/image2.jpg" alt="Memory 2">
           <img src="images/image3.jpg" alt="Memory 3">
@@ -219,7 +210,6 @@
   </div>
   
   <script>
-    // Smooth page transition on all link clicks
     document.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', function(e) {
         e.preventDefault();
@@ -231,11 +221,10 @@
       });
     });
     
-    // Mobile gesture: Swipe right to return to the love letter page
     let touchstartX = 0;
     let touchendX = 0;
     function handleGesture() {
-      if (touchendX - touchstartX > 100) {  // adjust threshold as needed
+      if (touchendX - touchstartX > 100) {          
         document.body.classList.add('fade-out');
         setTimeout(() => {
           window.location.href = 'index.html';
